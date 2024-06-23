@@ -31,6 +31,7 @@ public class Coupon extends BaseTimeEntity {
     @Enumerated(value = EnumType.STRING)
     private CouponType couponType;
 
+//    consider Null values
     private Integer totalQuantity;
 
     @Column(nullable = false)
@@ -66,11 +67,13 @@ public class Coupon extends BaseTimeEntity {
     }
 
     public void issue() {
+        //  Quantity check
         if (!availableIssueQuantity()) {
             throw new CouponIssueException(INVALID_COUPON_ISSUE_QUANTITY, "Exceeds the quantity that can be issued. total : %s, issued: %s".formatted(totalQuantity, issuedQuantity));
         }
+        //  Date check
         if (!availableIssueDate()) {
-            throw new CouponIssueException(INVALID_COUPON_ISSUE_DATE, "Not an available issuance date. request : %s, issueStart: %s, issueEnd: %s".formatted(LocalDateTime.now(), dateIssueStart, dateIssueEnd));
+            throw new CouponIssueException(INVALID_COUPON_ISSUE_DATE, "Not an available date. request : %s, issueStart: %s, issueEnd: %s".formatted(LocalDateTime.now(), dateIssueStart, dateIssueEnd));
         }
         issuedQuantity++;
     }

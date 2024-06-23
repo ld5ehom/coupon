@@ -13,7 +13,7 @@ import static com.coupon.couponcore.exception.ErrorCode.INVALID_COUPON_ISSUE_QUA
 class CouponTest {
 
     @Test
-    @DisplayName("발급 수량이 남아있다면 true를 반환한다")
+    @DisplayName("Returns true if the issued quantity remains.")
     void availableIssueQuantity_1() {
         // given
         Coupon coupon = Coupon.builder()
@@ -27,7 +27,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 수량이 소진되었다면 false를 반환한다")
+    @DisplayName("Returns false if the issued quantity is exhausted.")
     void availableIssueQuantity_2() {
         // given
         Coupon coupon = Coupon.builder()
@@ -41,7 +41,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("최대 발급 수량이 설정되지 않았다면 true를 반환한다")
+    @DisplayName("Returns true if the maximum issued quantity is not set.")
     void availableIssueQuantity_3() {
         // given
         Coupon coupon = Coupon.builder()
@@ -55,7 +55,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 기간이 시작되지 않았다면 false를 반환한다")
+    @DisplayName("Returns false if the issuance period has not started.")
     void availableIssueDate_1() {
         // given
         Coupon coupon = Coupon.builder()
@@ -69,7 +69,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 기간에 해당되면 true를 반환한다")
+    @DisplayName("Returns true if it falls within the issuance period.")
     void availableIssueDate_2() {
         // given
         Coupon coupon = Coupon.builder()
@@ -83,7 +83,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 기간이 종료되면 false를 반환한다")
+    @DisplayName("Returns false when the issuance period ends.")
     void availableIssueDate_3() {
         // given
         Coupon coupon = Coupon.builder()
@@ -97,7 +97,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 수량과 발급 기간이 유효하다면 발급에 성공한다")
+    @DisplayName("Issuance is successful if the issued quantity and issuance period are valid.")
     void issue_1() {
         // given
         Coupon coupon = Coupon.builder()
@@ -113,7 +113,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 수량을 초과하면 예외를 반환한다")
+    @DisplayName("If the issued quantity is exceeded, an exception is returned.")
     void issue_2() {
         // given
         Coupon coupon = Coupon.builder()
@@ -128,7 +128,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 기간이 아니면 예외를 반환한다")
+    @DisplayName("If it is not within the issuance period, an exception is returned.")
     void issue_3() {
         // given
         Coupon coupon = Coupon.builder()
@@ -143,7 +143,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 기간이 종료되면 true를 반환한다")
+    @DisplayName("Returns true when the issuance period ends.")
     void isIssueComplete_1() {
         // given
         Coupon coupon = Coupon.builder()
@@ -159,7 +159,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("잔여 발급 가능 수량이 없다면 true를 반환한다")
+    @DisplayName("Returns true if there is no remaining issuance quantity.")
     void isIssueComplete_2() {
         // given
         Coupon coupon = Coupon.builder()
@@ -175,7 +175,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("발급 기한과 수량이 유효하면 false를 반환한다")
+    @DisplayName("If the issuance deadline and quantity are valid, returns false.")
     void isIssueComplete_3() {
         // given
         Coupon coupon = Coupon.builder()

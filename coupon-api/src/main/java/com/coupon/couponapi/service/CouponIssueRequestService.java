@@ -22,7 +22,7 @@ public class CouponIssueRequestService {
 
     public void issueRequestV1(CouponIssueRequestDto requestDto) {
         couponIssueService.issue(requestDto.couponId(), requestDto.userId());
-        log.info("Coupon issued completed. couponId: %s, userId: %s".formatted(requestDto.couponId(), requestDto.userId()));
+        log.info("* Coupon issued completed! *. couponId: %s, userId: %s".formatted(requestDto.couponId(), requestDto.userId()));
     }
 
     public void asyncIssueRequestV1(CouponIssueRequestDto requestDto) {

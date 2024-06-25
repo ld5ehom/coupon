@@ -22,6 +22,7 @@ spring:
     redis:
       host: localhost
       port: 6380
+
 ---
 spring:
   config:
@@ -43,6 +44,7 @@ spring:
     redis:
       host: localhost
       port: 6380
+
 ---
 spring:
   config:

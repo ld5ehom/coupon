@@ -13,6 +13,7 @@ public class CouponIssueRepository {
 
     private final JPQLQueryFactory queryFactory;
 
+    // Check Coupon Issued
     public CouponIssue findFirstCouponIssue(long couponId, long userId) {
         return queryFactory.selectFrom(couponIssue)
                 .where(couponIssue.couponId.eq(couponId))

@@ -17,15 +17,15 @@ public enum CouponIssueRequestCode {
         if (codeValue == 1) return SUCCESS;
         if (codeValue == 2) return DUPLICATED_COUPON_ISSUE;
         if (codeValue == 3) return INVALID_COUPON_ISSUE_QUANTITY;
-        throw new IllegalArgumentException("존재하지 않는 코드입니다. %s".formatted(code));
+        throw new IllegalArgumentException("This code doesn't exist. %s".formatted(code));
     }
 
     public static void checkRequestResult(CouponIssueRequestCode code) {
         if (code == INVALID_COUPON_ISSUE_QUANTITY) {
-            throw new CouponIssueException(ErrorCode.INVALID_COUPON_ISSUE_QUANTITY, "발급 가능한 수량을 초과합니다");
+            throw new CouponIssueException(ErrorCode.INVALID_COUPON_ISSUE_QUANTITY, "Exceeds the quantity that can be issued");
         }
         if (code == DUPLICATED_COUPON_ISSUE) {
-            throw new CouponIssueException(ErrorCode.DUPLICATED_COUPON_ISSUE, "이미 발급된 쿠폰입니다.");
+            throw new CouponIssueException(ErrorCode.DUPLICATED_COUPON_ISSUE, "This coupon has already been issued.");
         }
     }
 }

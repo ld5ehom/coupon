@@ -42,7 +42,7 @@ class CouponIssueListenerTest extends TestConfig {
 
 
     @Test
-    @DisplayName("쿠폰 발급 큐에 처리 대상이 없다면 발급을 하지 않는다.")
+    @DisplayName("If there is no processing target in the coupon issuance queue, it is not issued.")
     void issue_1() throws JsonProcessingException {
         // when
         sut.issue();
@@ -51,7 +51,7 @@ class CouponIssueListenerTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 큐에 처리 대상이 있다면 발급한다.")
+    @DisplayName("If there is a processing target in the coupon issuance queue, it is issued.")
     void issue_2() throws JsonProcessingException {
         // given
         long couponId = 1;
@@ -66,7 +66,7 @@ class CouponIssueListenerTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 요청 순서에 맞게 처리된다.")
+    @DisplayName("Coupon issuance requests are processed in accordance with the order.")
     void issue_3() throws JsonProcessingException {
         // given
         long couponId = 1;

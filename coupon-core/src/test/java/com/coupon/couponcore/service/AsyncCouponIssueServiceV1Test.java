@@ -41,7 +41,7 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 - 쿠폰이 존재하지 않는다면 예외를 반환한다")
+    @DisplayName("Coupon issuance - returns an exception if the coupon does not exist")
     void issue_1() {
         // given
         long couponId = 1;
@@ -54,13 +54,13 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 - 발급 가능 수량이 존재하지 않는다면 예외를 반환한다")
+    @DisplayName("Coupon issuance - If the quantity available for issuance does not exist, an exception is returned.")
     void issue_2() {
         // given
         long userId = 1000;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(10)
                 .issuedQuantity(0)
                 .dateIssueStart(LocalDateTime.now().minusDays(1))
@@ -78,13 +78,13 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 - 이미 발급된 유저라면 예외를 반환한다")
+    @DisplayName("Coupon issuance - If the user has already been issued an exception, an exception is returned.")
     void issue_3() {
         // given
         long userId = 1;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(10)
                 .issuedQuantity(0)
                 .dateIssueStart(LocalDateTime.now().minusDays(1))
@@ -100,13 +100,13 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 - 발급 기한이 유효하지 않다면 예외를 반환한다")
+    @DisplayName("Coupon issuance - returns an exception if the issuance deadline is invalid")
     void issue_4() {
         // given
         long userId = 1;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(10)
                 .issuedQuantity(0)
                 .dateIssueStart(LocalDateTime.now().plusDays(1))
@@ -122,13 +122,13 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 - 쿠폰 발급을 기록한다")
+    @DisplayName("Coupon issuance - Record coupon issuance")
     void issue_5() {
         // given
         long userId = 1;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(10)
                 .issuedQuantity(0)
                 .dateIssueStart(LocalDateTime.now().minusDays(1))
@@ -143,13 +143,13 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 - 쿠폰 발급 요청이 성공하면 쿠폰 발급 큐에 적재된다.")
+    @DisplayName("Coupon issuance - If the coupon issuance request is successful, it is loaded into the coupon issuance queue.")
     void issue_6() throws JsonProcessingException {
         // given
         long userId = 1;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(10)
                 .issuedQuantity(0)
                 .dateIssueStart(LocalDateTime.now().minusDays(1))

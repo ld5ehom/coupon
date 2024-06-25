@@ -40,7 +40,7 @@ class CouponIssueServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 내역이 존재하면 예외를 반환한다")
+    @DisplayName("If coupon issuance history exists, an exception is returned.")
     void saveCouponIssue_1() {
         // given
         CouponIssue couponIssue = CouponIssue.builder()
@@ -56,7 +56,7 @@ class CouponIssueServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰 발급 내역이 존재하지 않는다면 쿠폰을 발급한다")
+    @DisplayName("If there is no coupon issuance history, a coupon is issued.")
     void saveCouponIssue_2() {
         // given
         long couponId = 1L;
@@ -68,13 +68,13 @@ class CouponIssueServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("발급 수량, 기한, 중복 발급 문제가 없다면 쿠폰을 발급한다")
+    @DisplayName("If there are no issues with the issuance quantity, expiration date, or duplicate issuance, the coupon will be issued.")
     void issue_1() {
         // given
         long userId = 1;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(100)
                 .issuedQuantity(0)
                 .dateIssueStart(LocalDateTime.now().minusDays(1))
@@ -93,13 +93,13 @@ class CouponIssueServiceTest extends TestConfig {
 
 
     @Test
-    @DisplayName("발급 수량에 문제가 있다면 예외를 반환한다")
+    @DisplayName("If there is an issue with the issuance quantity, return an exception.")
     void issue_2() {
         // given
         long userId = 1;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(100)
                 .issuedQuantity(100)
                 .dateIssueStart(LocalDateTime.now().minusDays(1))
@@ -114,13 +114,13 @@ class CouponIssueServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("발급 기한에 문제가 있다면 예외를 반환한다")
+    @DisplayName("If there is an issue with the issuance deadline, return an exception.")
     void issue_3() {
         // given
         long userId = 1;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(100)
                 .issuedQuantity(0)
                 .dateIssueStart(LocalDateTime.now().minusDays(2))
@@ -135,13 +135,13 @@ class CouponIssueServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("중복 발급 검증에 문제가 있다면 예외를 반환한다")
+    @DisplayName("If there is a problem with duplicate issuance verification, return an exception.")
     void issue_4() {
         // given
         long userId = 1;
         Coupon coupon = Coupon.builder()
                 .couponType(CouponType.FIRST_COME_FIRST_SERVED)
-                .title("선착순 테스트 쿠폰")
+                .title("First-come, first-served coupon test")
                 .totalQuantity(100)
                 .issuedQuantity(0)
                 .dateIssueStart(LocalDateTime.now().minusDays(1))
@@ -163,7 +163,7 @@ class CouponIssueServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("쿠폰이 존재하지 않는다면 예외를 반환한다")
+    @DisplayName("If the coupon does not exist, return an exception.")
     void issue_5() {
         // given
         long userId = 1;

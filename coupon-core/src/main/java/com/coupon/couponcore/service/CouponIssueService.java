@@ -28,17 +28,19 @@ public class CouponIssueService {
     public void issue(long couponId, long userId) {
         Coupon coupon = findCouponWithLock(couponId);
         coupon.issue();
-        saveCouponIssue(couponId, userId);
+        saveCouponIssue(couponId, userId);  // User Date Save
         publishCouponEvent(coupon);
     }
 
     @Transactional(readOnly = true)
+    // Check Coupon Availability
     public Coupon findCoupon(long couponId) {
         return couponJpaRepository.findById(couponId).orElseThrow(() -> {
             throw new CouponIssueException(COUPON_NOT_EXIST, "Coupon policy does not exist. %s".formatted(couponId));
         });
     }
 
+    // Control Critical Section
     @Transactional
     public Coupon findCouponWithLock(long couponId) {
         return couponJpaRepository.findCouponWithLock(couponId).orElseThrow(() -> {

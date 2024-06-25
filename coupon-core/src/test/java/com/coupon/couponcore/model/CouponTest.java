@@ -14,6 +14,7 @@ class CouponTest {
 
     @Test
     @DisplayName("Returns true if the issued quantity remains.")
+    // Quantity Check
     void availableIssueQuantity_1() {
         // given
         Coupon coupon = Coupon.builder()
@@ -56,6 +57,7 @@ class CouponTest {
 
     @Test
     @DisplayName("Returns false if the issuance period has not started.")
+    // Date Check
     void availableIssueDate_1() {
         // given
         Coupon coupon = Coupon.builder()
@@ -98,6 +100,7 @@ class CouponTest {
 
     @Test
     @DisplayName("Issuance is successful if the issued quantity and issuance period are valid.")
+    // Issued Check
     void issue_1() {
         // given
         Coupon coupon = Coupon.builder()

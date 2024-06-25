@@ -16,6 +16,7 @@ public class DistributeLockExecutor {
     private final RedissonClient redissonClient;
     private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
+    // distributed lock
     public void execute(String lockName, long waitMilliSecond, long leaseMilliSecond, Runnable logic) {
         RLock lock = redissonClient.getLock(lockName);
         try {

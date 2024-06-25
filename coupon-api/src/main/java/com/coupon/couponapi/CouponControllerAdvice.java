@@ -5,6 +5,7 @@ import com.coupon.couponcore.exception.CouponIssueException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+// Failed case controller
 @RestControllerAdvice
 public class CouponControllerAdvice {
 

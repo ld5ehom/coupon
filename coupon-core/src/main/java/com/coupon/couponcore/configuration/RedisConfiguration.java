@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedisConfiguration {
 
+  // coupon-core/resources/application-core.yml/
   @Value("${spring.data.redis.host}")
   private String host;
 

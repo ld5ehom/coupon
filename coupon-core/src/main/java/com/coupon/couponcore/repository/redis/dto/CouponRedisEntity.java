@@ -47,10 +47,10 @@ public record CouponRedisEntity(
 
     public void checkIssuableCoupon() {
         if (!availableIssueQuantity) {
-            throw new CouponIssueException(INVALID_COUPON_ISSUE_QUANTITY, "모든 발급 수량이 소진되었습니다. coupon_id : %s".formatted(id));
+            throw new CouponIssueException(INVALID_COUPON_ISSUE_QUANTITY, "All issued quantities have been sold out. coupon_id : %s".formatted(id));
         }
         if (!availableIssueDate()) {
-            throw new CouponIssueException(INVALID_COUPON_ISSUE_DATE, "발급 가능한 일자가 아닙니다. request : %s, issueStart: %s, issueEnd: %s".formatted(LocalDateTime.now(), dateIssueStart, dateIssueEnd));
+            throw new CouponIssueException(INVALID_COUPON_ISSUE_DATE, "The date is not available for issuance. request : %s, issueStart: %s, issueEnd: %s".formatted(LocalDateTime.now(), dateIssueStart, dateIssueEnd));
         }
     }
 }

@@ -25,6 +25,7 @@ public class RedisRepository {
     private final String issueRequestQueueKey = getIssueRequestQueueKey();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    // Verify duplicate issuance based on zAdd response value using set
     public Boolean zAdd(String key, String value, double score) {
         return redisTemplate.opsForZSet().addIfAbsent(key, value, score);
     }
@@ -33,6 +34,7 @@ public class RedisRepository {
         return redisTemplate.opsForSet().add(key, value);
     }
 
+    // Check set size
     public Long sCard(String key) {
         return redisTemplate.opsForSet().size(key);
     }
@@ -41,6 +43,7 @@ public class RedisRepository {
         return redisTemplate.opsForSet().isMember(key, value);
     }
 
+    // Queue list
     public Long rPush(String key, String value) {
         return redisTemplate.opsForList().rightPush(key, value);
     }

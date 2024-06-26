@@ -14,6 +14,7 @@ public enum CouponIssueRequestCode {
 
     public static CouponIssueRequestCode find(String code) {
         int codeValue = Integer.parseInt(code);
+
         if (codeValue == 1) return SUCCESS;
         if (codeValue == 2) return DUPLICATED_COUPON_ISSUE;
         if (codeValue == 3) return INVALID_COUPON_ISSUE_QUANTITY;

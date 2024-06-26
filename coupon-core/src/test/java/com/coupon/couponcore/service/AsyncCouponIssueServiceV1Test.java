@@ -40,6 +40,7 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
         redisTemplate.delete(redisKeys);
     }
 
+    // Issued Check
     @Test
     @DisplayName("Coupon issuance - returns an exception if the coupon does not exist")
     void issue_1() {
@@ -53,6 +54,7 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
         Assertions.assertEquals(exception.getErrorCode(), COUPON_NOT_EXIST);
     }
 
+    // Quantity Check
     @Test
     @DisplayName("Coupon issuance - If the quantity available for issuance does not exist, an exception is returned.")
     void issue_2() {
@@ -77,6 +79,7 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
         Assertions.assertEquals(exception.getErrorCode(), INVALID_COUPON_ISSUE_QUANTITY);
     }
 
+    // Check set data , already issued
     @Test
     @DisplayName("Coupon issuance - If the user has already been issued an exception, an exception is returned.")
     void issue_3() {
@@ -99,6 +102,7 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
         Assertions.assertEquals(exception.getErrorCode(), DUPLICATED_COUPON_ISSUE);
     }
 
+    // Deadline Check
     @Test
     @DisplayName("Coupon issuance - returns an exception if the issuance deadline is invalid")
     void issue_4() {
@@ -121,6 +125,7 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
         Assertions.assertEquals(exception.getErrorCode(), INVALID_COUPON_ISSUE_DATE);
     }
 
+    // Record coupon (successful)
     @Test
     @DisplayName("Coupon issuance - Record coupon issuance")
     void issue_5() {

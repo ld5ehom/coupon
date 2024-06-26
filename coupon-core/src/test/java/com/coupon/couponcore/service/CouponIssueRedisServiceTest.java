@@ -55,7 +55,7 @@ class CouponIssueRedisServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("Verification of duplicate coupon issuance - Returns true if the user does not exist in the issued history.")
+    @DisplayName("Verification of duplicate coupon issuance - Return true if the user does not exist in the issued history.")
     void availableUserIssueQuantity_1() {
         // given
         long couponId = 1;
@@ -67,7 +67,7 @@ class CouponIssueRedisServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("Verification of duplicate coupon issuance - If a user exists in the issued history, false is returned.")
+    @DisplayName("Verification of duplicate coupon issuance - Return false if a user exists in the issued history.")
     void availableUserIssueQuantity_2() {
         // given
         long couponId = 1;

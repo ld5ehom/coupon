@@ -24,6 +24,7 @@ public class AsyncCouponIssueServiceV1 {
     private final CouponCacheService couponCacheService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    // Check conditions and add to queue
     public void issue(long couponId, long userId) {
         CouponRedisEntity coupon = couponCacheService.getCouponCache(couponId);
         coupon.checkIssuableCoupon();

@@ -16,6 +16,7 @@ public class CouponIssueRedisService {
 
     private final RedisRepository redisRepository;
 
+    // Implemented a queue using Redis List function
     public void checkCouponIssueQuantity(CouponRedisEntity coupon, long userId) {
         if (!availableUserIssueQuantity(coupon.id(), userId)) {
             throw new CouponIssueException(DUPLICATED_COUPON_ISSUE, "Exceeds the quantity that can be issued. couponId : %s, userId: %s".formatted(coupon.id(), userId));

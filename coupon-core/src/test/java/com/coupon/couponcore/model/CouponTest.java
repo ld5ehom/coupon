@@ -13,7 +13,7 @@ import static com.coupon.couponcore.exception.ErrorCode.INVALID_COUPON_ISSUE_QUA
 class CouponTest {
 
     @Test
-    @DisplayName("Returns true if the issued quantity remains.")
+    @DisplayName("Return true if the issued quantity remains.")
     // Quantity Check
     void availableIssueQuantity_1() {
         // given
@@ -28,7 +28,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("Returns false if the issued quantity is exhausted.")
+    @DisplayName("Return false if the issued quantity is exhausted.")
     void availableIssueQuantity_2() {
         // given
         Coupon coupon = Coupon.builder()
@@ -42,7 +42,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("Returns true if the maximum issued quantity is not set.")
+    @DisplayName("Return true if the maximum issued quantity is not set.")
     void availableIssueQuantity_3() {
         // given
         Coupon coupon = Coupon.builder()
@@ -56,7 +56,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("Returns false if the issuance period has not started.")
+    @DisplayName("Return false if the issuance period has not started.")
     // Date Check
     void availableIssueDate_1() {
         // given
@@ -71,7 +71,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("Returns true if it falls within the issuance period.")
+    @DisplayName("Return true if it falls within the issuance period.")
     void availableIssueDate_2() {
         // given
         Coupon coupon = Coupon.builder()
@@ -85,7 +85,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("Returns false when the issuance period ends.")
+    @DisplayName("Return false when the issuance period ends.")
     void availableIssueDate_3() {
         // given
         Coupon coupon = Coupon.builder()
@@ -146,7 +146,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("Returns true when the issuance period ends.")
+    @DisplayName("Return true when the issuance period ends.")
     void isIssueComplete_1() {
         // given
         Coupon coupon = Coupon.builder()
@@ -162,7 +162,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("Returns true if there is no remaining issuance quantity.")
+    @DisplayName("Return true if there is no remaining issuance quantity.")
     void isIssueComplete_2() {
         // given
         Coupon coupon = Coupon.builder()
@@ -178,7 +178,7 @@ class CouponTest {
     }
 
     @Test
-    @DisplayName("If the issuance deadline and quantity are valid, returns false.")
+    @DisplayName("Return false if the issuance deadline and quantity are valid.")
     void isIssueComplete_3() {
         // given
         Coupon coupon = Coupon.builder()

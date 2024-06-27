@@ -28,7 +28,7 @@ class CouponIssueRedisServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("Coupon quantity verification - returns true if there is a quantity that can be issued")
+    @DisplayName("Coupon quantity verification - Return true if there is a quantity that can be issued")
     void availableTotalIssueQuantity_1() {
         // given
         int totalIssueQuantity = 10;
@@ -40,7 +40,7 @@ class CouponIssueRedisServiceTest extends TestConfig {
     }
 
     @Test
-    @DisplayName("Coupon quantity verification - returns false when all available quantities are exhausted")
+    @DisplayName("Coupon quantity verification - Return false when all available quantities are exhausted")
     void availableTotalIssueQuantity_2() {
         // given
         int totalIssueQuantity = 10;

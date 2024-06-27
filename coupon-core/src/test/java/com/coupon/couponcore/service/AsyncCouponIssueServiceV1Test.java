@@ -42,7 +42,7 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
 
     // Issued Check
     @Test
-    @DisplayName("Coupon issuance - returns an exception if the coupon does not exist")
+    @DisplayName("Coupon issuance - Return an exception if the coupon does not exist")
     void issue_1() {
         // given
         long couponId = 1;
@@ -104,7 +104,7 @@ class AsyncCouponIssueServiceV1Test extends TestConfig {
 
     // Deadline Check
     @Test
-    @DisplayName("Coupon issuance - returns an exception if the issuance deadline is invalid")
+    @DisplayName("Coupon issuance - Return an exception if the issuance deadline is invalid")
     void issue_4() {
         // given
         long userId = 1;
